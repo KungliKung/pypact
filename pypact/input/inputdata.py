@@ -82,6 +82,7 @@ class InputData(JSONSerializable):
         self._ignoreuncert          = False
         self._enablemonitor         = False
         self._usecumfissyield       = False
+        self._usefissyield            = False
         self._clearancedata         = False
         self._loglevel              = LOG_SEVERITY_WARNING
         self._probtable             = False
@@ -218,6 +219,9 @@ class InputData(JSONSerializable):
     
     def useCumulativeFissionYieldData(self, use = True):
         self._usecumfissyield = use
+
+    def useFissionYieldData(self, use = True):
+        self._usefissyield = use
     
     def includeClearanceData(self, include = True):
         self._clearancedata = include
@@ -471,6 +475,10 @@ class InputData(JSONSerializable):
         if self._usecumfissyield:
             addcomment("use cumulative fission yield data mt=459 instead of mt=454")
             addkeyword('CUMFYLD')
+
+        if self._usefissyield:
+            addcomment("use fission data")
+            addkeyword('USEFISSION')
             
         if self._enablemonitor:
             addcomment("monitor FISPACT-II progress")
