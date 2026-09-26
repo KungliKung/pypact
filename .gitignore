@@ -41,6 +41,3 @@ examples/figures/all_spectra
 
 # Reference output files
 reference/*.out
-
-# Mac / System junk (if applicable)
-.DS_Store

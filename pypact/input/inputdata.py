@@ -82,7 +82,7 @@ class InputData(JSONSerializable):
         self._ignoreuncert          = False
         self._enablemonitor         = False
         self._usecumfissyield       = False
-        self._usefissyield            = False
+        self._usefissyield          = False
         self._clearancedata         = False
         self._loglevel              = LOG_SEVERITY_WARNING
         self._probtable             = False
@@ -657,7 +657,6 @@ class InputData(JSONSerializable):
                 # if self._ignorecollapse and i > 0:
                 #     addkeyword('GETXS', args=[0])
 
-           
                 addkeyword('FLUX', args=[f"{fluxamp:.{self._prec}E}"])
                 addkeyword('TIME', args=[f"{time:.{self._prec}E}", 'SECS'])
                 addkeyword('ATOMS')
@@ -672,7 +671,6 @@ class InputData(JSONSerializable):
                 # if self._ignorecollapse:
                 #     addkeyword('GETXS', args=[0])
                     
-               
                 addkeyword('TIME', args=[f"{time:.{self._prec}E}", 'SECS'])
                 addkeyword('ATOMS')
             addcomment("end of cooling")
@@ -731,7 +729,6 @@ class InputData(JSONSerializable):
             "YEARS": 31536000
         }
 
-
         for line in lines:
             line = line.strip()
             if line.startswith("MASS"):
@@ -762,7 +759,6 @@ class InputData(JSONSerializable):
                 parts = line.split()
                 if len(parts) != 2:
                     raise PypactInvalidOptionException("Invalid DENSITY line format.")
-
                 self.setDensity(float(parts[1]))
 
             elif line.startswith("FLUX") and irradiation_active:
@@ -823,5 +819,4 @@ class InputData(JSONSerializable):
                     )
                 # Stop processing irradiation schedule
                 irradiation_active = False
-
                 current_flux_amp = 0.0
